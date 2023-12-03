@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/assets/datos_login.dart';
+import 'package:my_app/firebase/email_auth.dart';
 import 'package:my_app/screens/dashboard_screem.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String user = '';
   String pass = '';
   bool recordar = false;
+  final emailAuth = EmailAuth();
 
   llenarCampos(){
     if(recordar){
@@ -77,8 +79,11 @@ class _LoginScreenState extends State<LoginScreen> {
     final btnEntrar = FloatingActionButton.extended(
         icon: const Icon(Icons.login),
         label: const Text('Entrar'),
-        onPressed: () {
-
+        onPressed: () async {
+          bool res = await emailAuth.validarUser(emailUser: txtConUser.text, pdwUser: txtConPass.text);
+          if(res){
+            
+          }
           if(llenarCampos()){
             user = txtConUser.text;
             pass = txtConPass.text;
@@ -104,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.only(bottom: 100.0),
           child: Stack(
             alignment: Alignment.bottomCenter,
+
             children: [
               Container(
                 height: 300,
@@ -125,7 +131,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              imglogo
+              imglogo,
+              TextButton(
+                onPressed: ()=>Navigator.pushNamed(context, '/register'), 
+                child: Text('Registrarse',
+                style:  TextStyle(fontSize: 20)),
+              )
             ],
           ),
         ),

@@ -51,6 +51,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ListTile(
             leading: const Icon(Icons.task_alt_outlined),
             trailing: const Icon(Icons.chevron_right),
+            title: const Text('PELICULAS'),
+            onTap: () => Navigator.pushNamed(context, '/popular'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.task_alt_outlined),
+            trailing: const Icon(Icons.chevron_right),
+            title: const Text('PELICULAS FAVORITAS'),
+            onTap: () => Navigator.pushNamed(context, '/favoritas'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.task_alt_outlined),
+            trailing: const Icon(Icons.chevron_right),
             title: const Text('Carreras Manager'),
             onTap: () => Navigator.pushNamed(context, '/carrera'),
           ),

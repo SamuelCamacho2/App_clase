@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/database/movieBD.dart';
 import 'package:my_app/models/populart_model.dart';
 import 'package:my_app/networks/api_popular.dart';
 import 'package:my_app/widgets/item_movie_widget.dart';
@@ -11,16 +12,18 @@ class PopularScreen extends StatefulWidget {
 
 class _PopularScreenState extends State<PopularScreen> {
   ApiPopular? apiPopular;
+  MovieBD? movieBD;
 
-  @override
+  @override 
   void initState() {
     super.initState();
     apiPopular = ApiPopular();
+    movieBD = MovieBD();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
       appBar: AppBar(
         title: const Text('Popular Movies'),
       ),

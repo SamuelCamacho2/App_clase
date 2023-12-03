@@ -133,5 +133,4 @@ Future<List<TareaModelo>> ListarTareasRealizadas() async{
   var result = await conexion!.query('tblTareas', where: 'realizada = ?', whereArgs: [1]);
   return result.map((task)=>TareaModelo.fromMap(task)).toList();
 }
-
 }
